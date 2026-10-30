@@ -1,3 +1,4 @@
+import getpass
 import logging
 import multiprocessing
 import os
@@ -180,7 +181,7 @@ def main():
         "aw-watcher-window", host=args.host, port=args.port, testing=args.testing
     )
 
-    bucket_id = f"{client.client_name}_{client.client_hostname}"
+    bucket_id = f"{client.client_name}_{getpass.getuser()}_{client.client_hostname}"
     event_type = "currentwindow"
 
     # Register before connecting: the queue creates the bucket and retries
